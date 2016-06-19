@@ -1,0 +1,81 @@
+Before (Check what unmapped <Tab> does):
+  let expandtab = &expandtab
+  set expandtab
+  execute 'normal!' "A\<Tab>"
+  let expanded_line = getline('.')
+  execute 'normal' "\<Undo>"
+  set noexpandtab
+  execute 'normal!' "A\<Tab>"
+  let noexpanded_line = getline('.')
+  execute 'normal' "\<Undo>"
+  let &expandtab = expandtab
+
+After (Restore expandtab):
+  let &expandtab = expandtab
+
+Given (Tabs):
+  	
+
+Execute (Check that <Tab> produces tabs with expandtab):
+  AssertEqual "\t", getline('.')
+  set expandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual noexpanded_line, getline('.')
+  AssertEqual "\t\t", getline('.')
+
+Execute (Check that <Tab> produces tabs with noexpandtab):
+  AssertEqual "\t", getline('.')
+  set noexpandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual noexpanded_line, getline('.')
+  AssertEqual "\t\t", getline('.')
+
+Given (Spaces):
+   
+
+Execute (Check that <Tab> produces spaces with expandtab):
+  AssertEqual ' ', getline('.')
+  set expandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual expanded_line, getline('.')
+  Assert getline('.') =~ '^  \+$'
+
+Execute (Check that <Tab> produces spaces with noexpandtab):
+  AssertEqual ' ', getline('.')
+  set noexpandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual expanded_line, getline('.')
+  Assert getline('.') =~ '^  \+$'
+
+Given (Nothing):
+
+Execute (Check that <Tab> behaves as expected with expandtab):
+  AssertEqual '', getline('.')
+  set expandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual expanded_line, getline('.')
+  Assert getline('.') =~ '^ \+$'
+
+Execute (Check that <Tab> behaves as expected with noexpandtab):
+  AssertEqual '', getline('.')
+  set noexpandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual noexpanded_line, getline('.')
+  AssertEqual "\t", getline('.')
+
+Given (Neither spaces nor tabs):
+  asdf
+
+Execute (Check that <Tab> behaves as expected with expandtab):
+  AssertEqual 'asdf', getline('.')
+  set expandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual expanded_line, getline('.')
+  Assert getline('.') =~ '^asdf \+$'
+
+Execute (Check that <Tab> behaves as expected with noexpandtab):
+  AssertEqual 'asdf', getline('.')
+  set noexpandtab
+  execute 'normal' "A\<Tab>"
+  AssertEqual noexpanded_line, getline('.')
+  AssertEqual "asdf\t", getline('.')

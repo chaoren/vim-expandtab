@@ -29,7 +29,7 @@ MAPPING					*smartexpandtab-mapping*
 					*smartexpandtab-i_CTRL-I*
 					*smartexpandtab-i_<Tab>*
 					*smartexpandtab-i_Tab*
-<Tab> or CTRL-I Insert a smartly expandable tab. If the character before the
+<Tab> or CTRL-I Insert a smart expanding tab. If the character before the
 		cursor is a space, then spaces will be inserted up to the
 		next tabstop. If the character before the cursor is a tab,
 		then a literal <Tab> will be inserted. If neither of these

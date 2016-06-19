@@ -3,6 +3,15 @@ Smarter tab expansion for Vim
 
 [![Build Status](https://travis-ci.org/chaoren/vim-smartexpandtab.svg?branch=master)](https://travis-ci.org/chaoren/vim-smartexpandtab)
 
+With this plugin, hitting `<Tab>` in insert mode will insert a smart expanding
+tab:
+
+1. If the character before the cursor is a space, then spaces will be inserted
+   up to the next `'tabstop'`.
+2. If the character before the cursor is a tab, then a literal `<Tab>` will be
+   inserted.
+3. If neither of these cases apply, then this behaves like a regular `i_<Tab>`.
+
 Let `_` be a space and `--->` be a tab.
 
 Suppose you hit `<Tab>` here:

@@ -37,11 +37,11 @@ MAPPING						*smartexpandtab-mapping*
 
 CUSTOMIZATION					*smartexpandtab-customization*
 
-						*g:smartexpandtab_map*
-Use |g:smartexpandtab_map| to disable the default <Tab> mapping.
+						*g:smartexpandtab_no_map*
+Use |g:smartexpandtab_no_map| to disable the default <Tab> mapping.
 E.g.,
 >
-	let g:smartexpandtab_map = 0
+	let g:smartexpandtab_no_map = 0
 <
 						*<Plug>SmartExpandTab*
 Use |<Plug>SmartExpandTab| to define your own mapping.

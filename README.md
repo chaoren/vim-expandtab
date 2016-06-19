@@ -41,10 +41,10 @@ alignment that was already there.
 Customization
 =============
 
-Use `g:smartexpandtab_map` to disable the default `<Tab>` mapping.  
+Use `g:smartexpandtab_no_map` to disable the default `<Tab>` mapping.  
 E.g.,
 ```
-	let g:smartexpandtab_map = 0
+	let g:smartexpandtab_no_map = 1
 ```
 
 Use `<Plug>SmartExpandTab` to define your own mapping.  

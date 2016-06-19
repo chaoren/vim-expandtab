@@ -49,3 +49,5 @@ function! <SID>SmartExpandTab() abort " {{{
 	" previous character was neither a tab nor a space, change nothing
 	return l:tab
 endfunction " }}}
+
+" vim:fdm=marker

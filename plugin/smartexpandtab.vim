@@ -5,9 +5,7 @@ let g:loaded_smartexpandtab = 1
 
 inoremap <silent><expr><Plug>SmartExpandTab <SID>SmartExpandTab()
 
-let s:map = get(g:, 'smartexpandtab_map', 1)
-
-if s:map
+if get(g:, 'smartexpandtab_map', 1)
 	imap <Tab> <Plug>SmartExpandTab
 endif
 

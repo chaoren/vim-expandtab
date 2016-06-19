@@ -3,7 +3,7 @@ if exists('g:loaded_smartexpandtab')
 endif
 let g:loaded_smartexpandtab = 1
 
-inoremap <silent><expr><Plug>SmartExpandTab <SID>Tab()
+inoremap <silent><expr><Plug>SmartExpandTab <SID>SmartExpandTab()
 
 let s:map = get(g:, 'smartexpandtab_map', 1)
 
@@ -11,7 +11,7 @@ if s:map
 	imap <Tab> <Plug>SmartExpandTab
 endif
 
-function! <SID>Tab() abort " {{{
+function! <SID>SmartExpandTab() abort " {{{
 	let l:tab = "\<Tab>"
 
 	" When 'expandtab' is off, Vim does its own automatic thing with tabs and

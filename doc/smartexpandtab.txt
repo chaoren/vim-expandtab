@@ -49,12 +49,6 @@ E.g.,
 >
 	imap <Leader><Tab> <Plug>SmartExpandTab
 <
-					*smartexpandtab#tab()*
-Use |smartexpandtab#tab()| in <expr> mappings.
-E.g.,
->
-	imap <silent><expr><Leader><Tab> smartexpandtab#tab()
-<
 CAVEATS					*smartexpandtab-caveats*
 
 Vim does its own thing with tabs and spaces in these cases when

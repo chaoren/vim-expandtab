@@ -53,12 +53,6 @@ E.g.,
 	imap <Leader><Tab> <Plug>SmartExpandTab
 ```
 
-Use `smartexpandtab#tab()` in `<expr>` mappings.
-E.g.,
-```
-	imap <silent><expr><Leader><Tab> smartexpandtab#tab()
-```
-
 Caveats
 =======
 

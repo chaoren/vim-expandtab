@@ -60,8 +60,9 @@ CAVEATS					*smartexpandtab-caveats*
 Vim does its own thing with tabs and spaces in these cases when
 'expandtab' is off:
 
-1. 'smarttab' is on, and 'shiftwidth' is not a multiple of 'tabstop'.
-2. 'softtabstop' < 0, and 'shiftwidth' is not a multiple of 'tabstop'.
+1. at the start of a line, 'smarttab' is on, and 'shiftwidth' is not
+   a multiple of 'tabstop'.
+2. 'softtabstop' is negative, and 'shiftwidth' is not a multiple of 'tabstop'.
 3. 'softtabstop' is set, and not a multiple of 'tabstop'.
 
 It doesn't make sense for the plugin to function in these cases, so it will

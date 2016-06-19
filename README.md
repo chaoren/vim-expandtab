@@ -41,13 +41,13 @@ alignment that was already there.
 Customization
 =============
 
-Use `g:smartexpandtab_map` to disable the default `<Tab>` mapping.
+Use `g:smartexpandtab_map` to disable the default `<Tab>` mapping.  
 E.g.,
 ```
 	let g:smartexpandtab_map = 0
 ```
 
-Use `<Plug>SmartExpandTab` to define your own mapping.
+Use `<Plug>SmartExpandTab` to define your own mapping.  
 E.g.,
 ```
 	imap <Leader><Tab> <Plug>SmartExpandTab

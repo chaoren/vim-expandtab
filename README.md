@@ -1,6 +1,8 @@
 Smarter tab expansion for Vim
 =============================
 
+[![Build Status](https://travis-ci.org/chaoren/vim-smartexpandtab.svg?branch=master)](https://travis-ci.org/chaoren/vim-smartexpandtab)
+
 Let `_` be a space and `--->` be a tab.
 
 Suppose you hit `<Tab>` here:

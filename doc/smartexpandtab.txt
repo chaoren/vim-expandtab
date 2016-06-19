@@ -1,6 +1,6 @@
 *smartexpandtab.txt* Smarter tab expansion for Vim
 
-INTRODUCTION				*smartexpandtab*
+INTRODUCTION					*smartexpandtab*
 
 Let `_` be a space and `--->` be a tab.
 
@@ -24,32 +24,32 @@ Using 'smarttab' or 'softtabstop' forces your 'expandtab' behavior onto the
 file, while using this plugin will respect whatever choice of indentation or
 alignment that was already there.
 
-MAPPING					*smartexpandtab-mapping*
+MAPPING						*smartexpandtab-mapping*
 
-					*smartexpandtab-i_CTRL-I*
-					*smartexpandtab-i_<Tab>*
-					*smartexpandtab-i_Tab*
+						*smartexpandtab-i_CTRL-I*
+						*smartexpandtab-i_<Tab>*
+						*smartexpandtab-i_Tab*
 <Tab> or CTRL-I Insert a smart expanding tab. If the character before the
 		cursor is a space, then spaces will be inserted up to the
 		next tabstop. If the character before the cursor is a tab,
 		then a literal <Tab> will be inserted. If neither of these
 		cases apply, then this behaves like a regular |i_<Tab>|.
 
-CUSTOMIZATION				*smartexpandtab-customization*
+CUSTOMIZATION					*smartexpandtab-customization*
 
-					*g:smartexpandtab_map*
+						*g:smartexpandtab_map*
 Use |g:smartexpandtab_map| to disable the default <Tab> mapping.
 E.g.,
 >
 	let g:smartexpandtab_map = 0
 <
-					*<Plug>SmartExpandTab*
+						*<Plug>SmartExpandTab*
 Use |<Plug>SmartExpandTab| to define your own mapping.
 E.g.,
 >
 	imap <Leader><Tab> <Plug>SmartExpandTab
 <
-CAVEATS					*smartexpandtab-caveats*
+CAVEATS						*smartexpandtab-caveats*
 
 Vim does its own thing with tabs and spaces in these cases when
 'expandtab' is off:

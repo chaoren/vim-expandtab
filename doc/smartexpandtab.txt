@@ -37,11 +37,11 @@ MAPPING						*smartexpandtab-mapping*
 
 CUSTOMIZATION					*smartexpandtab-customization*
 
-						*g:smartexpandtab_no_map*
-Use |g:smartexpandtab_no_map| to disable the default <Tab> mapping.
+						*g:smartexpandtab_nomap*
+Use |g:smartexpandtab_nomap| to disable the default <Tab> mapping.
 E.g.,
 >
-	let g:smartexpandtab_no_map = 0
+	let g:smartexpandtab_nomap = 0
 <
 						*<Plug>SmartExpandTab*
 Use |<Plug>SmartExpandTab| to define your own mapping.
@@ -62,4 +62,4 @@ Vim does its own thing with tabs and spaces in these cases when
 It doesn't make sense for the plugin to function in these cases, so it will
 just do nothing.
 
- vim:tw=78:ts=8:ft=help:norl:
+ vim:tw=78:ts=8:noet:ft=help:norl:

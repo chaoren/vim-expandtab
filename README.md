@@ -1,7 +1,4 @@
-Smarter tab expansion for Vim
-=============================
-
-[![Build Status](https://travis-ci.org/chaoren/vim-smartexpandtab.svg?branch=master)](https://travis-ci.org/chaoren/vim-smartexpandtab)
+# Smarter tab expansion for Vim [![Build Status][1]][2]
 
 With this plugin, hitting `<Tab>` in insert mode will insert a smart expanding
 tab:
@@ -38,23 +35,21 @@ Using `'smarttab'` or `'softtabstop'` forces your `'expandtab'` behavior onto
 the file, while using this plugin will respect whatever choice of indentation or
 alignment that was already there.
 
-Customization
-=============
+## Customization
 
-Use `g:smartexpandtab_no_map` to disable the default `<Tab>` mapping.  
+Use `g:smartexpandtab_nomap` to disable the default `<Tab>` mapping.\
 E.g.,
 ```
-	let g:smartexpandtab_no_map = 1
+let g:smartexpandtab_nomap = 1
 ```
 
-Use `<Plug>SmartExpandTab` to define your own mapping.  
+Use `<Plug>SmartExpandTab` to define your own mapping.\
 E.g.,
 ```
-	imap <Leader><Tab> <Plug>SmartExpandTab
+imap <Leader><Tab> <Plug>SmartExpandTab
 ```
 
-Caveats
-=======
+## Caveats
 
 Vim does its own thing with tabs and spaces in these cases when
 `'expandtab'` is off:
@@ -67,3 +62,6 @@ Vim does its own thing with tabs and spaces in these cases when
 
 It doesn't make sense for the plugin to function in these cases, so it will
 just do nothing.
+
+[1]: https://travis-ci.com/chaoren/vim-smartexpandtab.svg?branch=master
+[2]: https://travis-ci.com/chaoren/vim-smartexpandtab

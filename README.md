@@ -39,13 +39,13 @@ alignment that was already there.
 
 Use `g:smartexpandtab_nomap` to disable the default `<Tab>` mapping.\
 E.g.,
-```
+```vim
 let g:smartexpandtab_nomap = 1
 ```
 
 Use `<Plug>SmartExpandTab` to define your own mapping.\
 E.g.,
-```
+```vim
 imap <Leader><Tab> <Plug>SmartExpandTab
 ```
 

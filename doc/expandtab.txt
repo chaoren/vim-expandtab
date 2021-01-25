@@ -1,6 +1,6 @@
-*smartexpandtab.txt* Smarter tab expansion for Vim
+*expandtab.txt* Context sensitive tab expansion for Vim
 
-INTRODUCTION					*smartexpandtab*
+INTRODUCTION					*expandtab*
 
 Let `_` be a space and `--->` be a tab.
 
@@ -24,32 +24,34 @@ Using 'smarttab' or 'softtabstop' forces your 'expandtab' behavior onto the
 file, while using this plugin will respect whatever choice of indentation or
 alignment that was already there.
 
-MAPPING						*smartexpandtab-mapping*
+MAPPING						*expandtab-mapping*
 
-						*smartexpandtab-i_CTRL-I*
-						*smartexpandtab-i_<Tab>*
-						*smartexpandtab-i_Tab*
-<Tab> or CTRL-I Insert a smart expanding tab. If the character before the
-		cursor is a space, then spaces will be inserted up to the
-		next tabstop. If the character before the cursor is a tab,
-		then a literal <Tab> will be inserted. If neither of these
-		cases apply, then this behaves like a regular |i_<Tab>|.
+						*expandtab-i_CTRL-I*
+						*expandtab-i_<Tab>*
+						*expandtab-i_Tab*
+<Tab> or CTRL-I Insert a tab or spaces depending on the previous character.
+		1. If the character before the cursor is a space, then spaces
+		   will be inserted up to the next tabstop.
+		2. If the character before the cursor is a tab, then a literal
+		   <Tab> will be inserted.
+		3. If neither of these cases apply, then this behaves like
+		   a regular |i_<Tab>|.
 
-CUSTOMIZATION					*smartexpandtab-customization*
+CUSTOMIZATION					*expandtab-customization*
 
-						*g:smartexpandtab_nomap*
-Use |g:smartexpandtab_nomap| to disable the default <Tab> mapping.
+						*g:expandtab_nomap*
+Use |g:expandtab_nomap| to disable the default <Tab> mapping.
 E.g.,
 >
-	let g:smartexpandtab_nomap = 0
+	let g:expandtab_nomap = 0
 <
-						*<Plug>SmartExpandTab*
-Use |<Plug>SmartExpandTab| to define your own mapping.
+						*<Plug>ExpandTab*
+Use |<Plug>ExpandTab| to define your own mapping.
 E.g.,
 >
-	imap <Leader><Tab> <Plug>SmartExpandTab
+	imap <Leader><Tab> <Plug>ExpandTab
 <
-CAVEATS						*smartexpandtab-caveats*
+CAVEATS						*expandtab-caveats*
 
 Vim does its own thing with tabs and spaces in these cases when
 'expandtab' is off:
@@ -60,6 +62,6 @@ Vim does its own thing with tabs and spaces in these cases when
 3. 'softtabstop' is set, and not a multiple of 'tabstop'.
 
 It doesn't make sense for the plugin to function in these cases, so it will
-just do nothing.
+just behave like a regular |i_<Tab>|.
 
  vim:tw=78:ts=8:noet:ft=help:norl:

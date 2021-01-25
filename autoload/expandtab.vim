@@ -1,4 +1,4 @@
-function smartexpandtab#expand()
+function expandtab#expand()
 	let l:tab = "\<Tab>"
 
 	" When 'expandtab' is off, Vim does its own automatic thing with tabs and
@@ -33,8 +33,9 @@ function smartexpandtab#expand()
 	elseif &l:expandtab && getline('.')[l:col - 2] == "\t"
 		" previous character was a real tab, so we're going to follow with
 		" a real tab
-		return "\<C-V>" . l:tab
+		return "\<C-V>".l:tab
 	endif
+
 	" previous character was neither a tab nor a space, change nothing
 	return l:tab
 endfunction

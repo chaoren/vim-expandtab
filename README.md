@@ -1,13 +1,13 @@
-# Smarter tab expansion for Vim [![Build Status][1]][2]
+# Context sensitive tab expansion for Vim [![Build Status][1]][2]
 
-With this plugin, hitting `<Tab>` in insert mode will insert a smart expanding
-tab:
+With this plugin, hitting `<Tab>` in insert mode will insert a tab or spaces
+depending on the previous character:
 
-1. If the character before the cursor is a space, then spaces will be inserted
-   up to the next `'tabstop'`.
-2. If the character before the cursor is a tab, then a literal `<Tab>` will be
-   inserted.
-3. If neither of these cases apply, then this behaves like a regular `i_<Tab>`.
+1.  If the character before the cursor is a space, then spaces will be inserted
+    up to the next `'tabstop'`.
+2.  If the character before the cursor is a tab, then a literal `<Tab>` will be
+    inserted.
+3.  If neither of these cases apply, then this behaves like a regular `i_<Tab>`.
 
 Let `_` be a space and `--->` be a tab.
 
@@ -28,8 +28,8 @@ ____
     ^<Tab>
 ```
 
-It doesn't make sense to insert a tab here, but if `'expandtab'` is off, then
-a tab would get inserted anyway.
+It doesn't make sense to insert a tab here, but if `'expandtab'` is off, then a
+tab would get inserted anyway.
 
 Using `'smarttab'` or `'softtabstop'` forces your `'expandtab'` behavior onto
 the file, while using this plugin will respect whatever choice of indentation or
@@ -37,31 +37,33 @@ alignment that was already there.
 
 ## Customization
 
-Use `g:smartexpandtab_nomap` to disable the default `<Tab>` mapping.\
+Use `g:expandtab_nomap` to disable the default `<Tab>` mapping. \
 E.g.,
+
 ```vim
-let g:smartexpandtab_nomap = 1
+let g:expandtab_nomap = 1
 ```
 
-Use `<Plug>SmartExpandTab` to define your own mapping.\
+Use `<Plug>ExpandTab` to define your own mapping. \
 E.g.,
+
 ```vim
-imap <Leader><Tab> <Plug>SmartExpandTab
+imap <Leader><Tab> <Plug>ExpandTab
 ```
 
 ## Caveats
 
-Vim does its own thing with tabs and spaces in these cases when
-`'expandtab'` is off:
+Vim does its own thing with tabs and spaces in these cases when `'expandtab'` is
+off:
 
-1. at the start of a line, `'smarttab'` is on, and `'shiftwidth'` is not
-   a multiple of `'tabstop'`.
-2. `'softtabstop'` is negative, and `'shiftwidth'` is not a multiple of
-   `'tabstop'`.
-3. `'softtabstop'` is set, and not a multiple of `'tabstop'`.
+1.  at the start of a line, `'smarttab'` is on, and `'shiftwidth'` is not a
+    multiple of `'tabstop'`.
+2.  `'softtabstop'` is negative, and `'shiftwidth'` is not a multiple of
+    `'tabstop'`.
+3.  `'softtabstop'` is set, and not a multiple of `'tabstop'`.
 
-It doesn't make sense for the plugin to function in these cases, so it will
-just do nothing.
+It doesn't make sense for the plugin to function in these cases, so it will just
+behave like a regular `i_<Tab>`.
 
-[1]: https://travis-ci.com/chaoren/vim-smartexpandtab.svg?branch=master
-[2]: https://travis-ci.com/chaoren/vim-smartexpandtab
+[1]: https://travis-ci.com/chaoren/vim-expandtab.svg?branch=master
+[2]: https://travis-ci.com/chaoren/vim-expandtab

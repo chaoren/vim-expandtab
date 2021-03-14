@@ -3,15 +3,15 @@ function expandtab#expand()
 
 	" When 'expandtab' is off, Vim does its own automatic thing with tabs and
 	" spaces in these cases:
-	" 1. at the start of a string, 'smarttab' is on, and 'shiftwidth' is not
+	" 1. at the start of a line, 'smarttab' is on, and 'shiftwidth' is not
 	"    a multiple of 'tabstop'
 	" 2. 'softtabstop' is negative, and 'shiftwidth' is not a multiple of
 	"    'tabstop'
 	" 3. 'softtabstop' is set, and not a multiple of 'tabstop'
 	" don't mess with these
 	if !&l:expandtab
-		if strpart(getline('.'), 0, col('.') - 1) =~ '^\s\+$' &&
-					\ &l:smarttab && &l:shiftwidth % &l:tabstop
+		let l:at_start = strpart(getline('.'), 0, col('.') - 1) =~# '^\s\+$'
+		if  l:at_start && &l:smarttab && &l:shiftwidth % &l:tabstop
 			return l:tab
 		elseif &l:softtabstop < 0 && &l:shiftwidth % &l:tabstop
 			return l:tab

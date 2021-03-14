@@ -44,7 +44,7 @@ Execute (Append <Tab> with expandtab):
 
 Then (Assert that spaces are produced):
   AssertEqual expanded_line, getline('.')
-  Assert getline('.') =~ '^  \+$'
+  Assert getline('.') =~# '^  \+$'
 
 Execute (Append <Tab> with noexpandtab):
   AssertEqual ' ', getline('.')
@@ -53,7 +53,7 @@ Execute (Append <Tab> with noexpandtab):
 
 Then (Assert that spaces are produced):
   AssertEqual expanded_line, getline('.')
-  Assert getline('.') =~ '^  \+$'
+  Assert getline('.') =~# '^  \+$'
 
 Given (Nothing):
   
@@ -65,7 +65,7 @@ Execute (Append <Tab> with expandtab):
 
 Then (Assert that spaces are produced):
   AssertEqual expanded_line, getline('.')
-  Assert getline('.') =~ '^ \+$'
+  Assert getline('.') =~# '^ \+$'
 
 Execute (Append <Tab> with noexpandtab):
   AssertEqual '', getline('.')
@@ -86,7 +86,7 @@ Execute (Append <Tab> with expandtab):
 
 Then (Assert that spaces are produced):
   AssertEqual expanded_line, getline('.')
-  Assert getline('.') =~ '^asdf \+$'
+  Assert getline('.') =~# '^asdf \+$'
 
 Execute (Append <Tab> with noexpandtab):
   AssertEqual 'asdf', getline('.')

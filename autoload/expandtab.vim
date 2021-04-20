@@ -1,41 +1,53 @@
-function expandtab#expand()
-	let l:tab = "\<Tab>"
+function s:Space()
+	" spaces until next tab stop
+	let l:tabstop = &l:softtabstop ? &l:softtabstop : &l:tabstop
+	let l:spaces = &l:tabstop - virtcol([line('.'), col('.')-1, 0]) % l:tabstop
+	return repeat(' ', l:spaces)
+endfunction
 
-	" When 'expandtab' is off, Vim does its own automatic thing with tabs and
-	" spaces in these cases:
-	" 1. at the start of a line, 'smarttab' is on, and 'shiftwidth' is not
-	"    a multiple of 'tabstop'
-	" 2. 'softtabstop' is negative, and 'shiftwidth' is not a multiple of
-	"    'tabstop'
-	" 3. 'softtabstop' is set, and not a multiple of 'tabstop'
-	" don't mess with these
+function expandtab#expand()
+	let l:auto_tab = "\<Tab>"
+	let l:real_tab = "\<C-V>\<Tab>"
+
+	" when 'expandtab' is off, vim mixes tabs and spaces in these cases:
 	if !&l:expandtab
-		let l:at_start = strpart(getline('.'), 0, col('.') - 1) =~# '^\s\+$'
+		let l:at_start = strpart(getline('.'), 0, col('.')-1) =~# '^\s\+$'
 		if  l:at_start && &l:smarttab && &l:shiftwidth % &l:tabstop
-			return l:tab
+			" at the start of a line, 'smarttab' is on, and 'shiftwidth' is not
+			" a multiple of 'tabstop'
+			return l:auto_tab
 		elseif &l:softtabstop < 0 && &l:shiftwidth % &l:tabstop
-			return l:tab
+			" 'softtabstop' is negative, and 'shiftwidth' is not a multiple of
+			" 'tabstop'
+			return l:auto_tab
 		elseif &l:softtabstop && &l:softtabstop % &l:tabstop
-			return l:tab
+			" 'softtabstop' is set, and not a multiple of 'tabstop'
+			return l:auto_tab
 		endif
 	endif
 
 	let l:col = col('.')
-	if l:col == 1
-		" no previous character, change nothing
-		return l:tab
-	elseif !&l:expandtab && getline('.')[l:col - 2] == ' '
-		" previous character was a space, so we're going to follow with
-		" enough spaces to get to the next tab stop
-		let l:tabstop = &l:softtabstop ? &l:softtabstop : &l:tabstop
-		let l:spaces = &l:tabstop - (virtcol('.') - 1) % l:tabstop
-		return repeat(' ', l:spaces)
-	elseif &l:expandtab && getline('.')[l:col - 2] == "\t"
-		" previous character was a real tab, so we're going to follow with
-		" a real tab
-		return "\<C-V>".l:tab
+
+	if l:col > 1
+		if getline('.')[l:col-2] == ' '
+			" after space
+			return !&l:expandtab ? s:Space() : l:auto_tab
+		elseif getline('.')[l:col-2] == "\t"
+			" after tab
+			return &l:expandtab ? l:real_tab : l:auto_tab
+		endif
 	endif
 
-	" previous character was neither a tab nor a space, change nothing
-	return l:tab
+	if l:col < col('$')
+		if getline('.')[l:col-1] == ' '
+			" before space
+			return !&l:expandtab ? s:Space() : l:auto_tab
+		elseif getline('.')[l:col-1] == "\t"
+			" before tab
+			return &l:expandtab ? l:real_tab : l:auto_tab
+		endif
+	endif
+
+	" no spaces around cursor, respect 'expandtab'
+	return l:auto_tab
 endfunction

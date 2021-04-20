@@ -1,0 +1,176 @@
+Before (Set and save options):
+  Save &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set shiftwidth=0 tabstop=4 softtabstop=0
+
+After (Restore options):
+  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab
+
+Given (A tab):
+  	
+
+Execute (Append <Tab> with expandtab after the tab):
+  set expandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\t", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\t", getline('.')
+
+Given (A tab followed by one character):
+  	a
+
+Execute (Append <Tab> with expandtab after the tab):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\ta", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\ta", getline('.')
+
+Given (A tab followed by two characters):
+  	as
+
+Execute (Append <Tab> with expandtab after the tab):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\tas", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\tas", getline('.')
+
+Given (A tab follwed by three characters):
+  	asd
+
+Execute (Append <Tab> with expandtab after the tab):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\tasd", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\tasd", getline('.')
+
+Given (A tab followed by four characters):
+  	asdf
+
+Execute (Append <Tab> with expandtab after the tab):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\tasdf", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\tasdf", getline('.')
+
+Given (A space):
+   
+
+Execute (Append <Tab> with expandtab after the space):
+  set expandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    ", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    ", getline('.')
+
+Given (A space followed by one character):
+   a
+
+Execute (Append <Tab> with expandtab after the space):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    a", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    a", getline('.')
+
+Given (A space followed by two characters):
+   as
+
+Execute (Append <Tab> with expandtab after the space):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    as", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    as", getline('.')
+
+Given (A space followed by three characters):
+   asd
+
+Execute (Append <Tab> with expandtab after the space):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    asd", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    asd", getline('.')
+
+Given (A space followed by four characters):
+   asdf
+
+Execute (Append <Tab> with expandtab after the space):
+  set expandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    asdf", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "^i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "    asdf", getline('.')

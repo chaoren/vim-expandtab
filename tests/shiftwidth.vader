@@ -1,0 +1,99 @@
+Before (Set and save options):
+  Save &smarttab, &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set smarttab shiftwidth=6 tabstop=4 softtabstop=0
+
+After (Restore options):
+  Restore &smarttab, &shiftwidth, &tabstop, &softtabstop, &expandtab
+
+Given (Nothing):
+  
+
+Execute (Insert <Tab> with expandtab):
+  set expandtab
+  execute 'normal' "i\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "      ", getline('.')
+
+Execute (Insert <Tab> twice with expandtab):
+  set expandtab
+  execute 'normal' "i\<Tab>\<Tab>"
+
+Then (Assert that spaces are produced):
+  AssertEqual "            ", getline('.')
+
+Execute (Insert <Tab> with noexpandtab):
+  set noexpandtab
+  execute 'normal' "i\<Tab>"
+
+Then (Assert that mixed tabs and spaces are produced):
+  AssertEqual "\t  ", getline('.')
+
+Execute (Insert <Tab> twice with noexpandtab):
+  set noexpandtab
+  execute 'normal' "i\<Tab>\<Tab>"
+
+Then (Assert that mixed tabs and spaces are produced):
+  AssertEqual "\t\t\t", getline('.')
+
+Given (A tab):
+  	
+
+Execute (Append <Tab> with expandtab after the tab):
+  set expandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\t", getline('.')
+
+Execute (Append <Tab> twice with expandtab after the tab):
+  set expandtab
+  execute 'normal' "a\<Tab>\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "\t\t\t", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that mixed tabs and spaces are produced):
+  AssertEqual "\t  ", getline('.')
+
+Execute (Append <Tab> twice with noexpandtab after the tab):
+  set noexpandtab
+  execute 'normal' "a\<Tab>\<Tab>"
+
+Then (Assert that mixed tabs and spaces are produced):
+  AssertEqual "\t\t\t", getline('.')
+
+Given (A space):
+   
+
+Execute (Append <Tab> with expandtab after the space):
+  set expandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "      ", getline('.')
+
+Execute (Append <Tab> twice with expandtab after the space):
+  set expandtab
+  execute 'normal' "a\<Tab>\<Tab>"
+
+Then (Assert that tabs are produced):
+  AssertEqual "            ", getline('.')
+
+Execute (Append <Tab> with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "a\<Tab>"
+
+Then (Assert that mixed tabs and spaces are produced):
+  AssertEqual "\t  ", getline('.')
+
+Execute (Append <Tab> twice with noexpandtab after the space):
+  set noexpandtab
+  execute 'normal' "a\<Tab>\<Tab>"
+
+Then (Assert that mixed tabs and spaces are produced):
+  AssertEqual "\t\t\t", getline('.')

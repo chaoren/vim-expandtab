@@ -1,6 +1,6 @@
 *expandtab.txt* Context sensitive tab expansion for Vim
 
-INTRODUCTION					*expandtab*
+INTRODUCTION					*vim-expandtab*
 
 Let `_` be a space and `--->` be a tab.
 

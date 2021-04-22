@@ -1,5 +1,6 @@
 Execute (Set options):
   Save &shiftwidth, &tabstop, &softtabstop
+  set shiftwidth=0 tabstop=4 softtabstop=0
 
 Given (A tab):
   	

@@ -58,6 +58,22 @@ E.g.,
 imap <Leader><Tab> <Plug>ExpandTab
 ```
 
+You can add this if you want to handle `pumvisible()` while using this plugin:
+
+```vim
+" disable the default <Tab> mapping from the plugin
+let g:expandtab_nomap = 1
+
+" in case the plugin is not loaded, we want <Tab> to still work
+" the plugin will replace this once it's loaded
+inoremap <Plug>ExpandTab <Tab>
+
+" handle pumvisible:
+" using <C-Y> to accept selected match
+" use <C-N> instead to select the next match
+imap <expr><Tab> pumvisible() ? '<C-Y>' : '<Plug>ExpandTab'
+```
+
 ## Caveats
 
 Vim mixes tabs and spaces in these cases when `'expandtab'` is off:

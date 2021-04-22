@@ -77,11 +77,9 @@ function expandtab#replace(map)
 		call s:mapset(l:map)
 	endif
 
-	if a:map.rhs !~? '<Tab>'
-		return
+	if a:map.rhs =~? '<Tab>'
+		let a:map.rhs = substitute(a:map.rhs, '\c<Tab>', '<Plug>ExpandTab', 'g')
+		let a:map.noremap = 0
+		call s:mapset(a:map)
 	endif
-
-	let a:map.rhs = substitute(a:map.rhs, '\c<Tab>', '<Plug>ExpandTab', 'g')
-	let a:map.noremap = 0
-	call s:mapset(a:map)
 endfunction

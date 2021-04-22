@@ -1,147 +1,66 @@
-Before (Set and save options):
-  Save &shiftwidth, &tabstop, &softtabstop, &expandtab
+Execute (Set options):
+  Save &shiftwidth, &tabstop, &softtabstop
   set shiftwidth=0 tabstop=4 softtabstop=0
-
-After (Restore options):
-  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab
-
-Given (Nothing):
-  
-
-Execute (Insert <Tab> with expandtab):
-  set expandtab
-  execute 'normal' "i\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "    ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab):
-  set noexpandtab
-  execute 'normal' "i\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "\t", getline('.')
 
 Given (A tab followed by a space):
   	 
 
-Execute (Insert <Tab> with expandtab between the tab and space):
-  set expandtab
-  execute 'normal' "0a\<Tab>"
+Do (Insert <Tab> between the tab and space):
+  $i\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab between the tab and space):
-  set noexpandtab
-  execute 'normal' "0a\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t ", getline('.')
+Expect (Tabs are produced):
+  		 
 
 Given (A space followed by a tab):
    	
 
-Execute (Insert <Tab> with expandtab between the space and tab):
-  set expandtab
-  execute 'normal' "0a\<Tab>"
+Do (Insert <Tab> between the space and tab):
+  $i\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "    \t", getline('.')
-
-Execute (Insert <Tab> with noexpandtab between the space and tab):
-  set noexpandtab
-  execute 'normal' "0a\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "    \t", getline('.')
+Expect (Spaces are produced):
+      	
 
 Given (Two spaces followed by a tab):
     	
 
-Execute (Insert <Tab> with expandtab between the spaces and tab):
-  set expandtab
-  execute 'normal' "$i\<Tab>"
+Do (Insert <Tab> between the space and tab):
+  $i\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "    \t", getline('.')
-
-Execute (Insert <Tab> with noexpandtab between the spaces and tab):
-  set noexpandtab
-  execute 'normal' "$i\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "    \t", getline('.')
+Expect (Spaces are produced):
+      	
 
 Given (Alternative tabs and spaces):
   	 	 	 	 
 
-Execute (Insert <Tab> with expandtab at column 1):
-  set expandtab
-  execute 'normal' "0i\<Tab>"
+Do (Insert <Tab> at column 1):
+  0i\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t \t \t \t ", getline('.')
+Expect (Tabs are produced):
+  		 	 	 	 
 
-Execute (Insert <Tab> with noexpandtab at column 1):
-  set noexpandtab
-  execute 'normal' "0i\<Tab>"
+Do (Insert <Tab> at column 2):
+  01li\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t \t \t \t ", getline('.')
+Expect (Tabs are produced):
+  		 	 	 	 
 
-Execute (Insert <Tab> with expandtab at column 2):
-  set expandtab
-  execute 'normal' "0li\<Tab>"
+Do (Insert <Tab> at column 3):
+  02li\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t \t \t \t ", getline('.')
+Expect (Spaces are produced):
+  	    	 	 	 
 
-Execute (Insert <Tab> with noexpandtab at column 2):
-  set noexpandtab
-  execute 'normal' "0li\<Tab>"
+Do (Insert <Tab> at column 4):
+  03li\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t \t \t \t ", getline('.')
+Expect (Tabs are produced):
+  	 		 	 	 
 
-Execute (Insert <Tab> with expandtab at column 3):
-  set expandtab
-  execute 'normal' "02li\<Tab>"
+Do (Insert <Tab> at column 5):
+  04li\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "\t    \t \t \t ", getline('.')
+Expect (Spaces are produced):
+  	 	    	 	 
 
-Execute (Insert <Tab> with noexpandtab at column 3):
-  set noexpandtab
-  execute 'normal' "02li\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "\t    \t \t \t ", getline('.')
-
-Execute (Insert <Tab> with expandtab at column 4):
-  set expandtab
-  execute 'normal' "03li\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "\t \t\t \t \t ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab at column 4):
-  set noexpandtab
-  execute 'normal' "03li\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "\t \t\t \t \t ", getline('.')
-
-Execute (Insert <Tab> with expandtab at column 5):
-  set expandtab
-  execute 'normal' "04li\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "\t \t    \t \t ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab at column 5):
-  set noexpandtab
-  execute 'normal' "04li\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "\t \t    \t \t ", getline('.')
+Execute (Restore options):
+  Restore &shiftwidth, &tabstop, &softtabstop

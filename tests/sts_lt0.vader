@@ -1,0 +1,102 @@
+Execute (Set options):
+  Save &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set shiftwidth=6 tabstop=4 softtabstop=-1
+
+Execute (Set expandtab):
+  set expandtab
+
+Given (Three characters):
+  abc
+
+Do (Append <Tab> after the characters):
+  $a\<Tab>
+
+Expect (Spaces are produced):
+  abc   
+
+Do (Append <Tab> twice after the characters):
+  $a\<Tab>\<Tab>
+
+Expect (Spaces are produced):
+  abc         
+
+Given (Three characters followed by a tab):
+  abc	
+
+Do (Append <Tab> after the tab):
+  $a\<Tab>
+
+Expect (Tabs are produced):
+  abc		
+
+Do (Append <Tab> twice after the tab):
+  $a\<Tab>\<Tab>
+
+Expect (Tabs are produced):
+  abc			
+
+Given (Three characters followed by a space):
+  abc 
+
+Do (Append <Tab> after the space):
+  $a\<Tab>
+
+Expect (Spaces are produced):
+  abc   
+
+Do (Append <Tab> twice after the space):
+  $a\<Tab>\<Tab>
+
+Expect (Spaces are produced):
+  abc         
+
+Execute (Set noexpandtab):
+  set noexpandtab
+
+Given (Three characters):
+  abc
+
+Do (Append <Tab> after the characters):
+  $a\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  abc	  
+
+Do (Append <Tab> twice after the characters):
+  $a\<Tab>\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  abc			
+
+Given (Three characters followed by a tab):
+  abc	
+
+Do (Append <Tab> after the tab):
+  $a\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  abc	  
+
+Do (Append <Tab> twice after the tab):
+  $a\<Tab>\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  abc			
+
+Given (Three characters followed by a space):
+  abc 
+
+Do (Append <Tab> after the space):
+  $a\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  abc	  
+
+Do (Append <Tab> twice after the space):
+  $a\<Tab>\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  abc			
+
+Execute (Restore options):
+  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab

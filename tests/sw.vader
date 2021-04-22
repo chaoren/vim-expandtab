@@ -1,0 +1,102 @@
+Execute (Set options):
+  Save &smarttab, &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set smarttab shiftwidth=6 tabstop=4 softtabstop=0
+
+Execute (Set expandtab):
+  set expandtab
+
+Given (Nothing):
+  
+
+Do (Insert <Tab>):
+  i\<Tab>
+
+Expect (Spaces are produced):
+        
+
+Do (Insert <Tab> twice):
+  i\<Tab>\<Tab>
+
+Expect (Spaces are produced):
+              
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the tab):
+  a\<Tab>
+
+Expect (Tabs are produced):
+  		
+
+Do (Append <Tab> twice after the tab):
+  a\<Tab>\<Tab>
+
+Expect (Tabs are produced):
+  			
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Spaces are produced):
+        
+
+Do (Append <Tab> twice after the space):
+  a\<Tab>\<Tab>
+
+Expect (Spaces are produced):
+              
+
+Execute (Set noexpandtab):
+  set noexpandtab
+
+Given (Nothing):
+  
+
+Do (Insert <Tab>):
+  i\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  	  
+
+Do (Insert <Tab> twice):
+  i\<Tab>\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  			
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the tab):
+  a\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  	  
+
+Do (Append <Tab> twice after the tab):
+  a\<Tab>\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  			
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  	  
+
+Do (Append <Tab> twice after the space):
+  a\<Tab>\<Tab>
+
+Expect (Mixed tabs and spaces are produced):
+  			
+
+Execute (Restore options):
+  Restore &smarttab, &shiftwidth, &tabstop, &softtabstop, &expandtab

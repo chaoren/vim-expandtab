@@ -1,176 +1,101 @@
-Before (Set and save options):
-  Save &shiftwidth, &tabstop, &softtabstop, &expandtab
-  set shiftwidth=0 tabstop=4 softtabstop=0
-
-After (Restore options):
-  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab
+Execute (Set options):
+  Save &shiftwidth, &tabstop, &softtabstop
 
 Given (A tab):
   	
 
-Execute (Insert <Tab> with expandtab before the tab):
-  set expandtab
-  execute 'normal' "i\<Tab>"
+Do (Insert <Tab> before the tab):
+  i\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the tab):
-  set noexpandtab
-  execute 'normal' "i\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "\t\t", getline('.')
+Expect (Tabs are produced):
+  		
 
 Given (One character followed by a tab):
   a	
 
-Execute (Insert <Tab> with expandtab before the tab):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the tab):
+  g_a\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "a\t\t", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the tab):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "a\t\t", getline('.')
+Expect (Tabs are produced):
+  a		
 
 Given (Two characters followed by a tab):
   as	
 
-Execute (Insert <Tab> with expandtab before the tab):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the tab):
+  g_a\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "as\t\t", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the tab):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "as\t\t", getline('.')
+Expect (Tabs are produced):
+  as		
 
 Given (Three characters followed by a tab):
   asd	
 
-Execute (Insert <Tab> with expandtab before the tab):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the tab):
+  g_a\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "asd\t\t", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the tab):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that tabs are produced):
-  AssertEqual "asd\t\t", getline('.')
+Expect (Tabs are produced):
+  asd		
 
 Given (Four characters followed by a tab):
   asdf	
 
-Execute (Insert <Tab> with expandtab before the tab):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the tab):
+  g_a\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "asdf\t\t", getline('.')
+Expect (Tabs are produced):
+  asdf		
 
-Execute (Insert <Tab> with noexpandtab before the tab):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the tab):
+  g_a\<Tab>
 
-Then (Assert that tabs are produced):
-  AssertEqual "asdf\t\t", getline('.')
+Expect (Tabs are produced):
+  asdf		
 
 Given (A space):
    
 
-Execute (Insert <Tab> with expandtab before the space):
-  set expandtab
-  execute 'normal' "i\<Tab>"
+Do (Insert <Tab> before the space):
+  i\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "     ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the space):
-  set noexpandtab
-  execute 'normal' "i\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "     ", getline('.')
+Expect (Spaces are produced):
+       
 
 Given (One character followed by a space):
   a 
 
-Execute (Insert <Tab> with expandtab before the space):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the space):
+  g_a\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "a    ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the space):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "a    ", getline('.')
+Expect (Spaces are produced):
+  a    
 
 Given (Two characters followed by a space):
   as 
 
-Execute (Insert <Tab> with expandtab before the space):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the space):
+  g_a\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "as   ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the space):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "as   ", getline('.')
+Expect (Spaces are produced):
+  as   
 
 Given (Three characters followed by a space):
   asd 
 
-Execute (Insert <Tab> with expandtab before the space):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the space):
+  g_a\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "asd  ", getline('.')
-
-Execute (Insert <Tab> with noexpandtab before the space):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "asd  ", getline('.')
+Expect (Spaces are produced):
+  asd  
 
 Given (Four characters followed by a space):
   asdf 
 
-Execute (Insert <Tab> with expandtab before the space):
-  set expandtab
-  execute 'normal' "g_a\<Tab>"
+Do (Insert <Tab> before the space):
+  g_a\<Tab>
 
-Then (Assert that spaces are produced):
-  AssertEqual "asdf     ", getline('.')
+Expect (Spaces are produced):
+  asdf     
 
-Execute (Insert <Tab> with noexpandtab before the space):
-  set noexpandtab
-  execute 'normal' "g_a\<Tab>"
-
-Then (Assert that spaces are produced):
-  AssertEqual "asdf     ", getline('.')
+Execute (Restore options):
+  Restore &shiftwidth, &tabstop, &softtabstop

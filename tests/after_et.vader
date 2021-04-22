@@ -1,0 +1,8 @@
+Execute (Set expandtab):
+  Save &expandtab
+  set expandtab
+
+Include: after.vader
+
+Execute (Restore expandtab):
+  Restore &expandtab

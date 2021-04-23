@@ -1,0 +1,133 @@
+Execute (Define assert function):
+  function AssertMapEqual(local, global)
+    unlet g:loaded_expandtab
+    runtime plugin/expandtab.vim
+    let l:local = maparg('<Tab>', 'i', 0, 1)
+    iunmap <buffer><Tab>
+    let l:global = maparg('<Tab>', 'i', 0, 1)
+    iunmap <Tab>
+    if !exists('*mapset')
+      let l:local.sid = g:local.sid
+      let l:global.sid = g:global.sid
+      if has('patch-8.1.0362')
+        let l:local.lnum = g:local.lnum
+        let l:global.lnum = g:global.lnum
+      endif
+    endif
+    AssertEqual a:local, l:local
+    AssertEqual a:global, l:global
+  endfunction
+
+Execute (Check map without <Tab>):
+  imap <Tab> global
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><Tab> local
+  let local = maparg('<Tab>', 'i', 0, 1)
+  call AssertMapEqual(local, global)
+
+Execute (Check noremap without <Tab>):
+  inoremap <Tab> global
+  let global = maparg('<Tab>', 'i', 0, 1)
+  inoremap <buffer><Tab> local
+  let local = maparg('<Tab>', 'i', 0, 1)
+  call AssertMapEqual(local, global)
+
+Execute (Check <silent> without <Tab>):
+  imap <silent><Tab> global
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><silent><Tab> local
+  let local = maparg('<Tab>', 'i', 0, 1)
+  call AssertMapEqual(local, global)
+
+Execute (Check <expr> without <Tab>):
+  imap <expr><Tab> global
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><expr><Tab> local
+  let local = maparg('<Tab>', 'i', 0, 1)
+  call AssertMapEqual(local, global)
+
+Execute (Check <nowait> without <Tab>):
+  imap <nowait><Tab> global
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><nowait><Tab> local
+  let local = maparg('<Tab>', 'i', 0, 1)
+  call AssertMapEqual(local, global)
+
+Execute (Check all without <Tab>):
+  inoremap <silent><expr><nowait><Tab> global
+  let global = maparg('<Tab>', 'i', 0, 1)
+  inoremap <buffer><silent><expr><nowait><Tab> local
+  let local = maparg('<Tab>', 'i', 0, 1)
+  call AssertMapEqual(local, global)
+
+Execute (Check map with <Tab>):
+  imap <Tab> global<Tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><Tab> local<Tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 'global<Tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Check noremap with <Tab>):
+  inoremap <Tab> global<Tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  inoremap <buffer><Tab> local<Tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 1, global.noremap
+  let global.noremap = 0
+  AssertEqual 'global<Tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Check <silent> with <Tab>):
+  imap <silent><Tab> global<Tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><silent><Tab> local<Tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 'global<Tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Check <expr> with <Tab>):
+  imap <expr><Tab> global<Tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><expr><Tab> local<Tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 'global<Tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Check <nowait> with <Tab>):
+  imap <nowait><Tab> global<Tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><nowait><Tab> local<Tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 'global<Tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Check all with <Tab>):
+  inoremap <silent><expr><nowait><Tab> global<Tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  inoremap <buffer><silent><expr><nowait><Tab> local<Tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 1, global.noremap
+  let global.noremap = 0
+  AssertEqual 'global<Tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Check map with multiple <Tab>s):
+  imap <Tab> global<Tab><TAB><tab>
+  let global = maparg('<Tab>', 'i', 0, 1)
+  imap <buffer><Tab> local<Tab><TAB><tab>
+  let local = maparg('<Tab>', 'i', 0, 1)
+  AssertEqual 'global<Tab><TAB><tab>', global.rhs
+  let global.rhs = 'global<Plug>ExpandTab<Plug>ExpandTab<Plug>ExpandTab'
+  call AssertMapEqual(local, global)
+
+Execute (Reload plugin for further tests):
+  delfunction AssertMapEqual
+  unlet g:loaded_expandtab
+  runtime plugin/expandtab.vim

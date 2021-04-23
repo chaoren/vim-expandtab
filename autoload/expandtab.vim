@@ -69,17 +69,28 @@ function s:mapset(map)
 	endif
 endfunction
 
-function expandtab#replace(map)
-	if a:map.buffer
-		let l:map = a:map
+function expandtab#map()
+	let l:map = maparg('<Tab>', 'i', 0, 1)
+
+	if !empty(l:map) && l:map.buffer
+		let l:local = l:map
 		iunmap <buffer><Tab>
-		let a:map = maparg('<Tab>', 'i', 0, 1)
-		call s:mapset(l:map)
+		let l:map = maparg('<Tab>', 'i', 0, 1)
+		call s:mapset(l:local)
 	endif
 
-	if a:map.rhs =~? '<Tab>'
-		let a:map.rhs = substitute(a:map.rhs, '\c<Tab>', '<Plug>ExpandTab', 'g')
-		let a:map.noremap = 0
-		call s:mapset(a:map)
+	if empty(l:map)
+		imap <Tab> <Plug>ExpandTab
+		return
+	endif
+
+	if l:map.rhs =~? '<Tab>'
+		let l:map.rhs = substitute(l:map.rhs, '\c<Tab>', '<Plug>ExpandTab', 'g')
+		let l:map.noremap = 0
+		call s:mapset(l:map)
+	else
+		" shouldn't be necessary, but mapset() is bugged
+		" https://github.com/vim/vim/issues/8143
+		call s:mapset(l:map)
 	endif
 endfunction

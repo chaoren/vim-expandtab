@@ -1,0 +1,84 @@
+Execute (Set options):
+  Save &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set shiftwidth=0 tabstop=4 softtabstop=0 expandtab
+
+Execute (Map <Tab>):
+  inoremap <Tab> <Tab><Tab>
+  unlet g:loaded_expandtab
+  runtime plugin/expandtab.vim
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Spaces are produced):
+          
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Tabs are produced):
+  			
+
+Execute (Map <Tab> to expression):
+  inoremap <expr><Tab> g:literal ? 'Tab' : '<Tab>'
+  unlet g:loaded_expandtab
+  runtime plugin/expandtab.vim
+
+Execute (Use regular tabs):
+  let g:literal = 0
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Spaces are produced):
+      
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Tabs are produced):
+  		
+
+Execute (Use literal "Tab"):
+  let g:literal = 1
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Literal "Tab" is produced):
+   Tab
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Literal "Tab" is produced):
+  	Tab
+
+Execute (Clean up variable):
+  unlet g:literal
+
+Execute (Unmap <Tab>):
+  iunmap <Tab>
+  unlet g:loaded_expandtab
+  runtime plugin/expandtab.vim
+
+Execute (Restore options):
+  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab

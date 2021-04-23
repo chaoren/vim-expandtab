@@ -75,6 +75,43 @@ Expect (Literal "Tab" is produced):
 Execute (Clean up variable):
   unlet g:literal
 
+Execute (Map <Tab> to script local function):
+  if has('patch-8.2.1347')
+    function s:Double(tab)
+      return a:tab.a:tab
+    endfunction
+    let sid = expand('<SID>')
+  else
+    function Double(tab)
+      return a:tab.a:tab
+    endfunction
+    let sid = ''
+  endif
+  execute 'inoremap' '<expr><Tab>' sid.'Double("<Tab>")'
+  unlet g:loaded_expandtab
+  runtime plugin/expandtab.vim
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Spaces are produced):
+          
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the space):
+  a\<Tab>
+
+Expect (Tabs are produced):
+  			
+
+Execute (Clean up function):
+  execute 'delfunction' sid.'Double'
+
 Execute (Unmap <Tab>):
   iunmap <Tab>
   unlet g:loaded_expandtab

@@ -88,9 +88,7 @@ function expandtab#map()
 		let l:map.rhs = substitute(l:map.rhs, '\c<Tab>', '<Plug>ExpandTab', 'g')
 		let l:map.noremap = 0
 		call s:mapset(l:map)
-	else
-		" shouldn't be necessary, but mapset() is bugged
-		" https://github.com/vim/vim/issues/8143
+	elseif !has('patch-8.2.2804')
 		call s:mapset(l:map)
 	endif
 endfunction

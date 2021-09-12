@@ -71,5 +71,5 @@ Vim mixes tabs and spaces in these cases when `'expandtab'` is off:
 It doesn't make sense for the plugin to function in these cases, so it will just
 behave like a regular `i_<Tab>`.
 
-[1]: https://travis-ci.com/chaoren/vim-expandtab.svg?branch=master
-[2]: https://travis-ci.com/chaoren/vim-expandtab
+[1]: https://app.travis-ci.com/chaoren/vim-expandtab.svg?branch=master
+[2]: https://app.travis-ci.com/chaoren/vim-expandtab

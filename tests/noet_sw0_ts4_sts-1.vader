@@ -1,0 +1,24 @@
+Execute (Set options):
+  Save &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set shiftwidth=0 tabstop=4 softtabstop=-1 noexpandtab
+
+Given (A space):
+   
+
+Do (Append <Tab> after the space):
+  A\<Tab>
+
+Expect (Spaces are produced):
+       
+
+Given (A tab):
+  	
+
+Do (Append <Tab> after the tab):
+  A\<Tab>
+
+Expect (A tab is produced):
+  		
+
+Execute (Restore options):
+  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab

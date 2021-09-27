@@ -20,7 +20,7 @@ function expandtab#expand()
 			" 'softtabstop' is negative, and 'shiftwidth' is not a multiple of
 			" 'tabstop'
 			return l:auto_tab
-		elseif &l:softtabstop && &l:softtabstop % &l:tabstop
+		elseif &l:softtabstop > 0 && &l:softtabstop % &l:tabstop
 			" 'softtabstop' is set, and not a multiple of 'tabstop'
 			return l:auto_tab
 		endif

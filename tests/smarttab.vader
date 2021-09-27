@@ -26,13 +26,13 @@ Given (A tab):
 Do (Append <Tab> after the tab):
   a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		
 
 Do (Append <Tab> twice after the tab):
   a\<Tab>\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   			
 
 Given (A space):

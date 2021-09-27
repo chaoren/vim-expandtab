@@ -6,52 +6,52 @@ Given (A tab):
   	
 
 Do (Append <Tab> after the tab):
-  a\<Tab>
+  0a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		
 
 Given (A tab followed by one character):
   	a
 
 Do (Append <Tab> after the tab):
-  ^i\<Tab>
+  0a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		a
 
 Given (A tab followed by two characters):
   	as
 
 Do (Append <Tab> after the tab):
-  ^i\<Tab>
+  0a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		as
 
 Given (A tab follwed by three characters):
   	asd
 
 Do (Append <Tab> after the tab):
-  ^i\<Tab>
+  0a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		asd
 
 Given (A tab followed by four characters):
   	asdf
 
 Do (Append <Tab> after the tab):
-  ^i\<Tab>
+  0a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		asdf
 
 Given (A space):
    
 
 Do (Append <Tab> after the space):
-  a\<Tab>
+  0a\<Tab>
 
 Expect (Spaces are produced):
       
@@ -60,7 +60,7 @@ Given (A space followed by one character):
    a
 
 Do (Append <Tab> after the space):
-  ^i\<Tab>
+  0a\<Tab>
 
 Expect (Spaces are produced):
       a
@@ -69,7 +69,7 @@ Given (A space followed by two characters):
    as
 
 Do (Append <Tab> after the space):
-  ^i\<Tab>
+  0a\<Tab>
 
 Expect (Spaces are produced):
       as
@@ -78,7 +78,7 @@ Given (A space followed by three characters):
    asd
 
 Do (Append <Tab> after the space):
-  ^i\<Tab>
+  0a\<Tab>
 
 Expect (Spaces are produced):
       asd
@@ -87,7 +87,7 @@ Given (A space followed by four characters):
    asdf
 
 Do (Append <Tab> after the space):
-  ^i\<Tab>
+  0a\<Tab>
 
 Expect (Spaces are produced):
       asdf

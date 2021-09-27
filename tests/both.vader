@@ -6,16 +6,16 @@ Given (A tab followed by a space):
   	 
 
 Do (Insert <Tab> between the tab and space):
-  $i\<Tab>
+  0li\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		 
 
 Given (A space followed by a tab):
    	
 
 Do (Insert <Tab> between the space and tab):
-  $i\<Tab>
+  0li\<Tab>
 
 Expect (Spaces are produced):
       	
@@ -24,24 +24,24 @@ Given (Two spaces followed by a tab):
     	
 
 Do (Insert <Tab> between the space and tab):
-  $i\<Tab>
+  02li\<Tab>
 
 Expect (Spaces are produced):
       	
 
-Given (Alternative tabs and spaces):
+Given (Alternating tabs and spaces):
   	 	 	 	 
 
 Do (Insert <Tab> at column 1):
   0i\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		 	 	 	 
 
 Do (Insert <Tab> at column 2):
   01li\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		 	 	 	 
 
 Do (Insert <Tab> at column 3):
@@ -53,7 +53,7 @@ Expect (Spaces are produced):
 Do (Insert <Tab> at column 4):
   03li\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   	 		 	 	 
 
 Do (Insert <Tab> at column 5):
@@ -61,6 +61,24 @@ Do (Insert <Tab> at column 5):
 
 Expect (Spaces are produced):
   	 	    	 	 
+
+Do (Insert <Tab> at column 6):
+  05li\<Tab>
+
+Expect (A tab is produced):
+  	 	 		 	 
+
+Do (Insert <Tab> at column 7):
+  06li\<Tab>
+
+Expect (Spaces are produced):
+  	 	 	    	 
+
+Do (Insert <Tab> at column 8):
+  07li\<Tab>
+
+Expect (A tab is produced):
+  	 	 	 		 
 
 Execute (Restore options):
   Restore &shiftwidth, &tabstop, &softtabstop

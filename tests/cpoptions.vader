@@ -1,7 +1,6 @@
 Execute (Set options):
-  Save &shiftwidth, &tabstop, &softtabstop, &expandtab, &cpoptions
-  set shiftwidth=0 tabstop=4 softtabstop=0 expandtab
-  set cpoptions+=<
+  Save &cpoptions, &shiftwidth, &tabstop, &softtabstop, &expandtab
+  set cpoptions+=< shiftwidth=0 tabstop=4 softtabstop=0 expandtab
   imapclear
   unlet g:loaded_expandtab
   runtime plugin/expandtab.vim
@@ -10,7 +9,7 @@ Given (A space):
    
 
 Do (Append <Tab> after the space):
-  a\<Tab>
+  0a\<Tab>
 
 Expect (Spaces are produced):
       
@@ -18,11 +17,11 @@ Expect (Spaces are produced):
 Given (A tab):
   	
 
-Do (Append <Tab> after the space):
-  a\<Tab>
+Do (Append <Tab> after the tab):
+  0a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		
 
 Execute (Restore options):
-  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab, &cpoptions
+  Restore &cpoptions, &shiftwidth, &tabstop, &softtabstop, &expandtab

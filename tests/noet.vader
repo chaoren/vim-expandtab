@@ -1,8 +1,10 @@
-Execute (Set expandtab):
+Execute (Set noexpandtab):
   Save &expandtab
-  set expandtab
+  set noexpandtab
 
 Include: before.vader
+Include: after.vader
+Include: both.vader
 
 Execute (Restore expandtab):
   Restore &expandtab

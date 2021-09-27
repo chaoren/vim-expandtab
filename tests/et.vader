@@ -2,7 +2,9 @@ Execute (Set expandtab):
   Save &expandtab
   set expandtab
 
+Include: before.vader
 Include: after.vader
+Include: both.vader
 
 Execute (Restore expandtab):
   Restore &expandtab

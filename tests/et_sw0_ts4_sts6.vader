@@ -1,21 +1,18 @@
 Execute (Set options):
   Save &shiftwidth, &tabstop, &softtabstop, &expandtab
-  set shiftwidth=0 tabstop=4 softtabstop=6
-
-Execute (Set expandtab):
-  set expandtab
+  set shiftwidth=0 tabstop=4 softtabstop=6 expandtab
 
 Given (Three characters):
   abc
 
 Do (Append <Tab> after the characters):
-  $a\<Tab>
+  A\<Tab>
 
 Expect (Spaces are produced):
   abc   
 
 Do (Append <Tab> twice after the characters):
-  $a\<Tab>\<Tab>
+  A\<Tab>\<Tab>
 
 Expect (Spaces are produced):
   abc         
@@ -24,13 +21,13 @@ Given (Three characters followed by a tab):
   abc	
 
 Do (Append <Tab> after the tab):
-  $a\<Tab>
+  A\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   abc		
 
 Do (Append <Tab> twice after the tab):
-  $a\<Tab>\<Tab>
+  A\<Tab>\<Tab>
 
 Expect (Tabs are produced):
   abc			
@@ -39,13 +36,13 @@ Given (Three characters followed by a space):
   abc 
 
 Do (Append <Tab> after the space):
-  $a\<Tab>
+  A\<Tab>
 
 Expect (Spaces are produced):
   abc   
 
 Do (Append <Tab> twice after the space):
-  $a\<Tab>\<Tab>
+  A\<Tab>\<Tab>
 
 Expect (Spaces are produced):
   abc         
@@ -57,13 +54,13 @@ Given (Three characters):
   abc
 
 Do (Append <Tab> after the characters):
-  $a\<Tab>
+  A\<Tab>
 
 Expect (Mixed tabs and spaces are produced):
   abc	  
 
 Do (Append <Tab> twice after the characters):
-  $a\<Tab>\<Tab>
+  A\<Tab>\<Tab>
 
 Expect (Mixed tabs and spaces are produced):
   abc			
@@ -72,13 +69,13 @@ Given (Three characters followed by a tab):
   abc	
 
 Do (Append <Tab> after the tab):
-  $a\<Tab>
+  A\<Tab>
 
 Expect (Mixed tabs and spaces are produced):
   abc	  
 
 Do (Append <Tab> twice after the tab):
-  $a\<Tab>\<Tab>
+  A\<Tab>\<Tab>
 
 Expect (Mixed tabs and spaces are produced):
   abc			
@@ -87,16 +84,16 @@ Given (Three characters followed by a space):
   abc 
 
 Do (Append <Tab> after the space):
-  $a\<Tab>
+  A\<Tab>
 
 Expect (Mixed tabs and spaces are produced):
   abc	  
 
 Do (Append <Tab> twice after the space):
-  $a\<Tab>\<Tab>
+  A\<Tab>\<Tab>
 
 Expect (Mixed tabs and spaces are produced):
   abc			
 
 Execute (Restore options):
-  Restore &shiftwidth, &tabstop, &softtabstop
+  Restore &shiftwidth, &tabstop, &softtabstop, &expandtab

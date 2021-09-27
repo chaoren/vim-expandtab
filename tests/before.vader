@@ -6,58 +6,52 @@ Given (A tab):
   	
 
 Do (Insert <Tab> before the tab):
-  i\<Tab>
+  0i\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		
 
 Given (One character followed by a tab):
   a	
 
 Do (Insert <Tab> before the tab):
-  g_a\<Tab>
+  0li\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   a		
 
 Given (Two characters followed by a tab):
   as	
 
 Do (Insert <Tab> before the tab):
-  g_a\<Tab>
+  02li\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   as		
 
 Given (Three characters followed by a tab):
   asd	
 
 Do (Insert <Tab> before the tab):
-  g_a\<Tab>
+  03li\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   asd		
 
 Given (Four characters followed by a tab):
   asdf	
 
 Do (Insert <Tab> before the tab):
-  g_a\<Tab>
+  04li\<Tab>
 
-Expect (Tabs are produced):
-  asdf		
-
-Do (Insert <Tab> before the tab):
-  g_a\<Tab>
-
-Expect (Tabs are produced):
+Expect (A tab is produced):
   asdf		
 
 Given (A space):
    
 
 Do (Insert <Tab> before the space):
-  i\<Tab>
+  0i\<Tab>
 
 Expect (Spaces are produced):
        
@@ -66,7 +60,7 @@ Given (One character followed by a space):
   a 
 
 Do (Insert <Tab> before the space):
-  g_a\<Tab>
+  0li\<Tab>
 
 Expect (Spaces are produced):
   a    
@@ -75,7 +69,7 @@ Given (Two characters followed by a space):
   as 
 
 Do (Insert <Tab> before the space):
-  g_a\<Tab>
+  02li\<Tab>
 
 Expect (Spaces are produced):
   as   
@@ -84,7 +78,7 @@ Given (Three characters followed by a space):
   asd 
 
 Do (Insert <Tab> before the space):
-  g_a\<Tab>
+  03li\<Tab>
 
 Expect (Spaces are produced):
   asd  
@@ -93,7 +87,7 @@ Given (Four characters followed by a space):
   asdf 
 
 Do (Insert <Tab> before the space):
-  g_a\<Tab>
+  04li\<Tab>
 
 Expect (Spaces are produced):
   asdf     

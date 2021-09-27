@@ -20,7 +20,7 @@ Execute (Set noexpandtab):
 Do (Insert <Tab>):
   i\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   	
 
 Execute (Restore options):

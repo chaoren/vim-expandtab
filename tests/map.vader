@@ -48,7 +48,7 @@ Given (A tab):
 Do (Append <Tab> after the space):
   a\<Tab>
 
-Expect (Tabs are produced):
+Expect (A tab is produced):
   		
 
 Execute (Use literal "Tab"):

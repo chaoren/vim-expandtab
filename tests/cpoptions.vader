@@ -1,7 +1,6 @@
 Execute (Set options):
   Save &cpoptions, &shiftwidth, &tabstop, &softtabstop, &expandtab
   set cpoptions+=< shiftwidth=0 tabstop=4 softtabstop=0 expandtab
-  imapclear
   unlet g:loaded_expandtab
   runtime plugin/expandtab.vim
 
